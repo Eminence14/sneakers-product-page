@@ -1,0 +1,29 @@
+:root {
+    --orange: hsl(26, 100%, 55%);
+    --paleOrange: hsl(25, 100%, 94%);
+    --veryDarkBlue: hsl(220, 13%, 13%);
+    --darkGrayBlue: hsl(219, 9%, 45%);
+    --grayBlue: hsl(220, 14%, 75%);
+    --lightGrayBlue: hsl(223, 64%, 98%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Kumbh;
+    src: url('../asset/KumbhSans-Regular.ttf');
+}
+
+/* base styles */
+body {
+    font-size: 16px;
+    font-family: Kumbh;
+    font-weight: 400;
+}
+
+/* mobile styles */
