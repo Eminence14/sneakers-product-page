@@ -124,6 +124,7 @@ function checkoutState() {
         delCheckout.addEventListener('click', () => {
             tracker = 0;
             addToCart.click()
+            itemsNum.textContent = tracker;
         })
         checkoutBtn.classList.remove('disabled')
     }
