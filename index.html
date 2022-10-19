@@ -13,15 +13,16 @@
 </head>
 
 <body>
+  <div id="overlay"></div>
   <!-- <a href="javascript:window.open('http://127.0.0.1:5500/index.html', '', 'width=375px, height=auto')">window</a> -->
   <header>
     <div class="menu">
-      <img src="./images/icon-menu.svg" class="open_menu active" alt="" />
-      <img src="./images/icon-close.svg" class="close_menu active" alt="" />
+      <img src="./images/icon-menu.svg" class="open_menu" alt="" />
     </div>
     <img src="./images/logo.svg" alt="" class="logo" />
     <nav>
-      <ul class="navbar">
+      <img src="./images/icon-close.svg" class="close_menu" alt="" />
+      <ul class="navbar ">
         <li class="nav_items">Collections</li>
         <li class="nav_items">Men</li>
         <li class="nav_items">Women</li>
@@ -30,7 +31,10 @@
       </ul>
     </nav>
     <div class="avatar_cart">
-      <img src="./images/icon-cart.svg" alt="" class="cart" />
+      <div class="cart_container">
+        <img src="./images/icon-cart.svg" alt="" class="cart" />
+        <span class="items_added">0</span>
+      </div>
       <img src="./images/image-avatar.png" alt="" class="avatar" />
     </div>
   </header>
@@ -86,9 +90,9 @@
       </div>
       <div class="add_product">
         <div class="product_tracker">
-          <img src="./images/icon-minus.svg" alt="">
+          <img src="./images/icon-minus.svg" alt="" class="minus">
           <span class="items_number">0</span>
-          <img src="./images/icon-plus.svg" alt="">
+          <img src="./images/icon-plus.svg" alt="" class="plus">
         </div>
         <div class="add_to_cart">
            <img src="./images/icon-cart.svg" alt="">

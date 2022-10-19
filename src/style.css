@@ -39,13 +39,16 @@ header {
 img.logo {
     margin-left: 1em;
 }
-nav .navbar,
+nav,
 .menu .close_menu,
 .thumbnails {
     display: none;
 }
 .avatar_cart {
     margin-left: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 .avatar_cart img {
     width: 100%;
@@ -53,6 +56,19 @@ nav .navbar,
 }
 .avatar_cart img.avatar {
     margin-left: .8em;
+}
+.cart_container {
+    position: relative;
+}
+.items_added {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: .5em;
+    background-color: var(--orange);
+    color: white;
+    padding: .1em .7em;
+    border-radius: 30px;
 }
 
 /* Carousel styling */
@@ -190,3 +206,60 @@ p.description {
 }
 
 /* Hamburger */
+.open_menu.active {
+    display: none;
+}
+.close_menu.active {
+    display: block;
+}
+nav {
+    position: relative;
+    animation: slide-in .4s forwards ease-in-out;
+}
+@keyframes slide-in {
+    0% {
+        width: 0;
+        margin-left: -80px;
+    }
+    5% {
+        width: 2%;
+    }
+    25% {
+        width: 12.5%;
+    }
+    50% {
+        width: 25%;
+    }
+    75% {
+        width: 50%;
+    }
+    100% {
+        width: 65%;
+    }
+}
+#overlay.active {
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.75);
+    pointer-events: none;
+}
+nav.active {
+    display: block;
+    position: fixed;
+    background-color: white;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 65%;
+    padding: 1.5em;
+}
+nav.active .navbar {
+    margin-top: 3em;
+    line-height: 2.5em;
+    font-weight: 700;
+}
