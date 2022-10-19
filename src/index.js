@@ -97,6 +97,7 @@ addToCart.addEventListener('click', () => {
     checkoutState()
 })
 addToCart.click()
+
 openCartIcon.addEventListener('click', () => {
     checkoutCard.classList.toggle('active')
     overlay.classList.toggle("active");
@@ -119,6 +120,11 @@ function checkoutState() {
 </div>
 <img src="./images/icon-delete.svg" alt="" class="delete_cart">
         `
+        const delCheckout = document.querySelector('.delete_cart')
+        delCheckout.addEventListener('click', () => {
+            tracker = 0;
+            addToCart.click()
+        })
         checkoutBtn.classList.remove('disabled')
     }
 }
