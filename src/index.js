@@ -13,16 +13,24 @@ nextBtn.addEventListener("click", () => {
     const currentSlide = track.querySelector(".active");
     const nextSlide = currentSlide.nextElementSibling;
     const nextIndex = slides.indexOf(nextSlide);
+    const currentThumb = thumbnails.querySelector('.active')
+    const nextThumb = currentThumb.nextElementSibling;
+
     showArrow(nextIndex);
     moveToSlide(currentSlide, nextSlide);
+    changeThumbnail(currentThumb, nextThumb)
 });
 
 prevBtn.addEventListener("click", () => {
     const currentSlide = track.querySelector(".active");
     const prevSlide = currentSlide.previousElementSibling;
     const prevIndex = slides.indexOf(prevSlide);
+    const currentThumb = thumbnails.querySelector('.active')
+    const prevThumb = currentThumb.previousElementSibling;
+
     showArrow(prevIndex);
     moveToSlide(currentSlide, prevSlide);
+    changeThumbnail(currentThumb, prevThumb)
 });
 
 function moveToSlide(current, target) {
@@ -104,6 +112,10 @@ openCartIcon.addEventListener('click', () => {
     header.classList.toggle('active')
 })
 
+checkoutBtn.addEventListener('click', () => {
+    openCartIcon.click()
+})
+
 function checkoutState() {
     if (tracker === 0) {
         checkoutBody.innerHTML = `<span class='empty_cart'>Your cart is empty</span>`
@@ -128,4 +140,27 @@ function checkoutState() {
         })
         checkoutBtn.classList.remove('disabled')
     }
+}
+
+// Tablet Carousel
+const thumbnails = document.querySelector('.thumbnails')
+const thumbnailImages = Array.from(thumbnails.children)
+thumbnails.addEventListener('click', e => {
+    const targetThumb = e.target.closest('img');
+    
+    if (!targetThumb) return;
+    const targetIndex = thumbnailImages.indexOf(e.target)
+    const currentSlide = track.querySelector(".active");
+    const targetSlide = slides[targetIndex]
+    const currentThumb = thumbnails.querySelector('.active')
+
+    changeThumbnail(currentThumb, targetThumb)
+    moveToSlide(currentSlide, targetSlide)
+    showArrow(targetIndex)
+})
+
+
+function changeThumbnail(current, target) {
+    current.classList.remove('active')
+    target.classList.add('active')
 }
