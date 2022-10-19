@@ -70,8 +70,13 @@ let tracker = 0;
 const itemsNum = document.querySelector('.items_number')
 const plusItem = document.querySelector('.plus')
 const minusItem = document.querySelector('.minus')
-const addToCart = document.querySelector('.cta')
+const addToCart = document.querySelector('.add_to_cart')
 const itemsAdded = document.querySelector('.items_added')
+const openCartIcon = document.querySelector('.cart')
+const checkoutCard = document.querySelector('.checkout_card')
+const checkoutBody = document.querySelector('.checkout_body')
+const checkoutBtn = document.querySelector('.checkout_btn')
+const header = document.querySelector('header')
 
 plusItem.addEventListener('click', () => {
     tracker++;
@@ -88,5 +93,32 @@ minusItem.addEventListener('click', () => {
 })
 
 addToCart.addEventListener('click', () => {
-    itemsAdded.textContent = tracker
+    itemsAdded.textContent = tracker;
+    checkoutState()
 })
+addToCart.click()
+openCartIcon.addEventListener('click', () => {
+    checkoutCard.classList.toggle('active')
+    overlay.classList.toggle("active");
+    header.classList.toggle('active')
+})
+
+function checkoutState() {
+    if (tracker === 0) {
+        checkoutBody.innerHTML = `<span class='empty_cart'>Your cart is empty</span>`
+        checkoutBtn.classList.add('disabled')
+    } else {
+        checkoutBody.innerHTML = `
+<div class="cb_image">
+    <img src="./images/image-product-1-thumbnail.jpg" alt="">
+</div>
+<div class="cb_description">
+    <span class="cb_desc_head">Autumn Limited Edition...</span>
+    <span class="cb_desc_pricing">$125.00 &times; <span class="cb_desc_items">${tracker}</span></span>
+    <span class="cb_desc_amount">$${tracker * 125}.00</span>
+</div>
+<img src="./images/icon-delete.svg" alt="" class="delete_cart">
+        `
+        checkoutBtn.classList.remove('disabled')
+    }
+}
