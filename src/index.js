@@ -112,10 +112,6 @@ openCartIcon.addEventListener('click', () => {
     header.classList.toggle('active')
 })
 
-checkoutBtn.addEventListener('click', () => {
-    openCartIcon.click()
-})
-
 function checkoutState() {
     if (tracker === 0) {
         checkoutBody.innerHTML = `<span class='empty_cart'>Your cart is empty</span>`
@@ -164,3 +160,20 @@ function changeThumbnail(current, target) {
     current.classList.remove('active')
     target.classList.add('active')
 }
+
+
+// Checkout form
+const closeForm = document.querySelector('.close_form')
+const checkoutForm = document.querySelector('.form_container')
+const submitBtn = document.querySelector('#submit')
+
+checkoutBtn.addEventListener('click', () => {
+    checkoutForm.classList.toggle('active')
+})
+closeForm.addEventListener('click', () => {
+    checkoutForm.classList.toggle('active')
+})
+submitBtn.addEventListener('click', e => {
+    e.preventDefault()
+    console.log('good')
+})

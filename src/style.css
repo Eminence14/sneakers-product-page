@@ -19,10 +19,15 @@
 	src: url("../asset/KumbhSans-Regular.ttf");
 }
 
+@font-face {
+	font-family: Poppins;
+	src: url('../asset/Poppins-Regular.ttf');
+}
+
 /* base styles */
 body {
 	font-size: 16px;
-	font-family: Kumbh;
+	font-family: Kumbh, sans-serif;
 	font-weight: 400;
 }
 
@@ -353,13 +358,82 @@ button.checkout_btn {
 .checkout_btn.disabled {
 	filter: grayscale(100%);
 	opacity: 0.5;
-	pointer-events: all;
+	pointer-events: none;
 }
 .empty_cart {
 	font-weight: 700;
 	font-size: 0.9em;
 	color: var(--darkGrayBlue);
 	margin: 1em auto;
+}
+
+/* Form styles */
+.form_container {
+	background-color: rgba(0, 0, 0, 0.2);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	pointer-events: all;
+	backdrop-filter: blur(3px);
+	transform: scale(0);
+	transition: .3s all ease-in;
+}
+.form_container.active {
+	transform: scale(1);
+}
+.close_form {
+	/* display: block; */
+	text-align: right;
+	position: relative;
+	top: -1em;
+	font-weight: 900;
+	font-size: 1.3em;
+	padding: .3em;
+	border-radius: 30px;
+	cursor: pointer;
+	margin-left: 100%;
+}
+form.checkout_form {
+	background-color: rgb(255, 237, 224, .7);
+	width: 90%;
+	border-radius: 10px;
+	margin: 0 auto;
+	padding: 3em 10% 1.5em;
+	font-family: Poppins, sans-serif;
+	margin-bottom: 2em;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.checkout_form div {
+	margin-bottom: 1em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.checkout_form div label {
+	font-weight: 700;
+}
+.checkout_form div input,
+.checkout_form div textarea,
+.checkout_form #submit {
+	outline: none;
+	padding: .5em;
+	width: 70%;
+	border-radius: 5px;
+	font-family: Poppins, sans-serif;
+	border: 1px solid var(--orange);
+}
+.checkout_form #submit {
+	background-color: var(--orange);
+	font-weight: 700;
+	color: white;
+	width: 100%;
+	font-family: Poppins, sans-serif;
 }
 
 /* Tablet styles */
@@ -498,7 +572,7 @@ button.checkout_btn {
 	}
     .checkout_card {
         width: 60%;
-        margin: 0.5em auto;
+        margin: 0.5em 0 0 30vw;
     }
 }
 
@@ -521,7 +595,8 @@ button.checkout_btn {
 .plus:hover,
 .minus:hover,
 .add_to_cart:hover,
-.thumbnails img:hover  {
+.thumbnails img:hover,
+.checkout_form #submit:hover  {
     cursor: pointer;
     opacity: .6;
 }
@@ -544,4 +619,7 @@ button.checkout_btn {
     p.description {
         font-size: .9em;
     }
+	form.checkout_form {
+		width: 50%;
+	}
 }
