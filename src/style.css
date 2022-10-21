@@ -276,6 +276,19 @@ nav {
 	background-color: rgba(0, 0, 0, 0.75);
 	pointer-events: all;
 }
+#overlay2 {
+	pointer-events: all;
+}
+#overlay2.active {
+	height: 100%;
+	width: 100%;
+	z-index: 2;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.75);
+	pointer-events: all;
+}
 nav.active {
 	display: block;
 	position: fixed;

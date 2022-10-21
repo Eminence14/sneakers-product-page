@@ -75,6 +75,7 @@ closeMenuBtn.addEventListener("click", () => {
 
 // Add to Cart Section
 let tracker = 0;
+const overlay2 = document.querySelector('#overlay2')
 const itemsNum = document.querySelector('.items_number')
 const plusItem = document.querySelector('.plus')
 const minusItem = document.querySelector('.minus')
@@ -108,8 +109,12 @@ addToCart.click()
 
 openCartIcon.addEventListener('click', () => {
     checkoutCard.classList.toggle('active')
-    overlay.classList.toggle("active");
+    overlay2.classList.toggle("active");
     header.classList.toggle('active')
+})
+
+overlay2.addEventListener('click', () => {
+  openCartIcon.click()
 })
 
 function checkoutState() {
@@ -173,7 +178,29 @@ checkoutBtn.addEventListener('click', () => {
 closeForm.addEventListener('click', () => {
     checkoutForm.classList.toggle('active')
 })
+
+
+// Email JS begins
+
+
 submitBtn.addEventListener('click', e => {
-    e.preventDefault()
-    console.log('good')
+    e.preventDefault();
+    const params = {
+      name: document.querySelector('#name').value,
+      email: document.querySelector('#email').value,
+      message: document.querySelector('#message').value
+    };
+    
+    emailjs.send("service_079q5aq", "template_9k6r9qr", params).then(response => {
+      alert('Order placed')}).then(() => {
+        document.querySelector('#name').value = ""
+        document.querySelector('#email').value = ""
+        document.querySelector('#message').value = ""
+        
+      }).catch(err => {
+       console.error(err)
+    })
+    tracker = 0;
+    addToCart.click()
+    itemsNum.textContent = tracker;
 })
